@@ -4,14 +4,14 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const sequelize = new Sequelize(process.env.MYSQLDATABASE, process.env.MYSQLUSER, process.env.MYSQLPASSWORD, {
-    host: process.env.MYSQLHOST,
+    host: process.env.MYSQLHOST, // Use the public Railway host
     dialect: process.env.DB_DIALECT || "mysql",
-    port: process.env.MYSQLPORT,
+    port: Number(process.env.MYSQLPORT), // Ensure port is a number
     logging: false,
     dialectOptions: {
         ssl: {
             require: true,
-            rejectUnauthorized: false, // Required for some hosting services
+            rejectUnauthorized: false,
         },
     },
 });
