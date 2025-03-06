@@ -3,18 +3,23 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const sequelize = new Sequelize(process.env.MYSQLDATABASE, process.env.MYSQLUSER, process.env.MYSQLPASSWORD, {
-    host: process.env.MYSQLHOST, // ✅ Use Railway's host
-    dialect: process.env.DB_DIALECT || "mysql",
-    port: Number(process.env.MYSQLPORT), // ✅ Ensure port is correct
-    logging: false,
-    dialectOptions: {
-        ssl: {
-            require: true,
-            rejectUnauthorized: false,
+const sequelize = new Sequelize(
+    process.env.MYSQL_DATABASE, 
+    process.env.MYSQL_USER, 
+    process.env.MYSQL_PASSWORD, 
+    {
+        host: process.env.MYSQL_HOST,
+        dialect: process.env.DB_DIALECT || "mysql",
+        port: Number(process.env.MYSQL_PORT),
+        logging: false,
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false,
+            },
         },
-    },
-});
+    }
+);
 
 const connectDB = async () => {
     try {
