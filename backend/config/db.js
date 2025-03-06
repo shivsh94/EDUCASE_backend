@@ -4,9 +4,9 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const sequelize = new Sequelize(process.env.MYSQLDATABASE, process.env.MYSQLUSER, process.env.MYSQLPASSWORD, {
-    host: process.env.MYSQLHOST, // Use the public Railway host
+    host: process.env.MYSQLHOST, // ✅ Use Railway's host
     dialect: process.env.DB_DIALECT || "mysql",
-    port: Number(process.env.MYSQLPORT), // Ensure port is a number
+    port: Number(process.env.MYSQLPORT), // ✅ Ensure port is correct
     logging: false,
     dialectOptions: {
         ssl: {
