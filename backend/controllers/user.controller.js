@@ -4,9 +4,7 @@ export const addSchool = async (req, res) => {
   try {
     const { name, address, longitude, latitude } = req.body;
     if (!name || !address || !longitude || !latitude) {
-      return res
-        .status(400)
-        .json({ success: true, error: "All fields are required" });
+      return res.status(400).json({ success: true, error: "All fields are required" });
     }
     const newSchool = await School.create({
       name,
@@ -54,7 +52,7 @@ export const listSchools = async (req, res) => {
   }
 };
 
-//  formula to calculate distance between two coordinates
+//  formula to calculate distance 
 
 function getDistance(lat1, lon1, lat2, lon2) {
   const toRad = (degree) => (degree * Math.PI) / 180;
